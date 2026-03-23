@@ -150,6 +150,14 @@
             font-size: 0.875rem;
         }
 
+        .nav-links a.btn-primary {
+            color: #fff;
+        }
+
+        .nav-links a.btn-primary:hover {
+            color: #fff;
+        }
+
         .hamburger {
             display: none;
             flex-direction: column;
@@ -1334,7 +1342,7 @@
                 </div>
             </div>
             <div class="contact-form fade-in" id="contactForm">
-                <form id="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <form id="form" action="mailto:hello@aionetech.in?subject=New Inquiry from AioneTech Website" method="POST" enctype="text/plain">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" placeholder="Your full name" required>
@@ -1423,40 +1431,17 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Contact form submission via Formspree
+    // Contact form submission - let the form submit natively to mailto:
     const form = document.getElementById('form');
     const formSuccess = document.getElementById('formSuccess');
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
-
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (response.ok) {
-                form.style.display = 'none';
-                formSuccess.classList.add('show');
-                form.reset();
-            } else {
-                throw new Error('Form submission failed');
-            }
-        } catch (error) {
-            // Fallback: still show success (Formspree may block in dev)
+    form.addEventListener('submit', () => {
+        // Show success message after the browser opens the mail client
+        setTimeout(() => {
             form.style.display = 'none';
             formSuccess.classList.add('show');
             form.reset();
-        } finally {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }
+        }, 1000);
     });
 </script>
 
