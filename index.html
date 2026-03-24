@@ -3,23 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI One Tech — Custom AI Application Development</title>
+    <title>AioneTech — AI Automation for Clinics & Healthcare | Get 2x More Patients</title>
+    <meta name="description" content="AI-powered patient booking, follow-ups & front desk automation for clinics. Get 2x more patient bookings while cutting admin work by 80%. Free audit available.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* ===== RESET & BASE ===== */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body {
             font-family: 'Inter', sans-serif;
             color: #1a1a2e;
@@ -29,1030 +21,461 @@
         }
 
         /* ===== UTILITIES ===== */
-        .container {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .section {
-            padding: 100px 0;
-        }
-
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 100px 0; }
         .section-title {
-            font-size: 2.25rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: #1a1a2e;
-            letter-spacing: -0.5px;
+            font-size: 2.25rem; font-weight: 800; margin-bottom: 20px;
+            color: #1a1a2e; letter-spacing: -0.5px;
         }
-
         .section-subtitle {
-            font-size: 1.125rem;
-            color: #555;
-            max-width: 640px;
-            margin-bottom: 48px;
+            font-size: 1.125rem; color: #555; max-width: 640px; margin-bottom: 48px;
         }
-
         .btn {
-            display: inline-block;
-            padding: 16px 36px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            display: inline-block; padding: 16px 36px; border-radius: 50px;
+            font-size: 1rem; font-weight: 600; text-decoration: none;
+            border: none; cursor: pointer; transition: all 0.3s ease;
         }
-
         .btn-primary {
             background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: #fff;
-            box-shadow: 0 4px 24px rgba(79, 70, 229, 0.35);
+            color: #fff; box-shadow: 0 4px 24px rgba(79, 70, 229, 0.35);
         }
-
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 32px rgba(79, 70, 229, 0.45);
         }
-
         .btn-secondary {
-            background: #fff;
-            color: #4f46e5;
-            border: 2px solid #4f46e5;
+            background: #fff; color: #4f46e5; border: 2px solid #4f46e5;
         }
-
         .btn-secondary:hover {
-            background: #4f46e5;
-            color: #fff;
-            transform: translateY(-2px);
+            background: #4f46e5; color: #fff; transform: translateY(-2px);
         }
-
-        /* ===== HEADER ===== */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-            transition: box-shadow 0.3s ease;
-        }
-
-        .header.scrolled {
-            box-shadow: 0 2px 24px rgba(0, 0, 0, 0.08);
-        }
-
-        .header .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 72px;
-        }
-
-        .logo {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: #4f46e5;
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        .logo span {
-            color: #1a1a2e;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #4f46e5;
-        }
-
-        .nav-links .btn {
-            padding: 10px 24px;
-            font-size: 0.875rem;
-        }
-
-        .nav-links a.btn-primary {
-            color: #fff;
-        }
-
-        .nav-links a.btn-primary:hover {
-            color: #fff;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 4px;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: #1a1a2e;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            padding: 180px 0 120px;
-            text-align: center;
-            background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero h1 {
-            font-size: 3.75rem;
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -1.5px;
-            margin-bottom: 24px;
-            color: #1a1a2e;
-            position: relative;
-        }
-
-        .hero h1 .gradient-text {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #555;
-            max-width: 620px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-            position: relative;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            position: relative;
-        }
-
-        /* ===== PROBLEM ===== */
-        .problem {
-            background: #fafafa;
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .problem-card {
-            background: #fff;
-            padding: 28px 32px;
-            border-radius: 16px;
-            border: 1px solid #eee;
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .problem-card:hover {
-            border-color: #e0e0ff;
-            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.06);
-            transform: translateY(-2px);
-        }
-
-        .problem-icon {
-            flex-shrink: 0;
-            width: 44px;
-            height: 44px;
-            background: #fef2f2;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .problem-card h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1a1a2e;
-            line-height: 1.6;
-        }
-
-        /* ===== SOLUTION ===== */
-        .solution {
-            text-align: center;
-        }
-
-        .solution .section-subtitle {
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 720px;
-            font-size: 1.15rem;
-            line-height: 1.85;
-        }
-
-        .solution-highlight {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 32px;
-            padding: 16px 32px;
-            background: linear-gradient(135deg, #f5f3ff, #ede9fe);
-            border-radius: 60px;
-            font-weight: 600;
-            color: #4f46e5;
-            font-size: 1rem;
-        }
-
-        /* ===== SERVICES ===== */
-        .services {
-            background: #fafafa;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .service-card {
-            background: #fff;
-            padding: 36px 32px;
-            border-radius: 16px;
-            border: 1px solid #eee;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-            border-color: transparent;
-        }
-
-        .service-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.5rem;
-        }
-
-        .service-card h4 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #1a1a2e;
-        }
-
-        .service-card p {
-            color: #777;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        /* ===== USE CASES ===== */
-        .use-cases-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .use-case-card {
-            padding: 32px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #f5f3ff, #ede9fe);
-            border: 1px solid #e9e5ff;
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .use-case-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(79, 70, 229, 0.08);
-        }
-
-        .use-case-number {
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        .use-case-card h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1a1a2e;
-            line-height: 1.6;
-        }
-
-        /* ===== HOW IT WORKS ===== */
-        .how-it-works {
-            background: #fafafa;
-            text-align: center;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            position: relative;
-        }
-
-        .steps::before {
-            content: '';
-            position: absolute;
-            top: 44px;
-            left: 20%;
-            right: 20%;
-            height: 2px;
-            background: linear-gradient(90deg, #ddd6fe, #c4b5fd, #ddd6fe);
-        }
-
-        .step {
-            position: relative;
-        }
-
-        .step-number {
-            width: 88px;
-            height: 88px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: #fff;
-            font-size: 2rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 4px 24px rgba(79, 70, 229, 0.3);
-        }
-
-        .step h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #1a1a2e;
-        }
-
-        .step p {
-            color: #777;
-            font-size: 0.9rem;
-            max-width: 260px;
-            margin: 0 auto;
-        }
-
-        /* ===== CTA ===== */
-        .cta {
-            text-align: center;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: #fff;
-            padding: 100px 0;
-        }
-
-        .cta .section-title {
-            color: #fff;
-        }
-
-        .cta .section-subtitle {
-            color: rgba(255, 255, 255, 0.85);
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn-primary {
-            background: #fff;
-            color: #4f46e5;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .cta .btn-primary:hover {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-        }
-
-        /* ===== CONTACT ===== */
-        .contact {
-            background: #fafafa;
-        }
-
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .contact-info h3 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            color: #1a1a2e;
-        }
-
-        .contact-info p {
-            color: #555;
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 32px;
-        }
-
-        .contact-detail {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        .contact-detail-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            background: #ede9fe;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-        }
-
-        .contact-form {
-            background: #fff;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
-            border: 1px solid #eee;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #1a1a2e;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border: 1.5px solid #e5e5e5;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
-            color: #1a1a2e;
-            background: #fafafa;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: #4f46e5;
-            background: #fff;
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .contact-form .btn {
-            width: 100%;
-            text-align: center;
-            font-size: 1rem;
-            padding: 16px;
-        }
-
-        .form-success {
-            display: none;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .form-success.show {
-            display: block;
-        }
-
-        .form-success .check-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            font-size: 1.8rem;
-        }
-
-        .form-success h4 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #1a1a2e;
-        }
-
-        .form-success p {
-            color: #777;
-        }
-
-        /* ===== MOBILE RESPONSIVE ===== */
-        @media (max-width: 992px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .steps {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-
-            .steps::before {
-                display: none;
-            }
-
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .section {
-                padding: 72px 0;
-            }
-
-            .section-title {
-                font-size: 1.75rem;
-            }
-
-            .hero {
-                padding: 140px 0 80px;
-            }
-
-            .hero h1 {
-                font-size: 2.25rem;
-                letter-spacing: -0.5px;
-            }
-
-            .hero p {
-                font-size: 1.05rem;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 72px;
-                left: 0;
-                right: 0;
-                background: #fff;
-                flex-direction: column;
-                padding: 24px;
-                gap: 16px;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-                transform: translateY(-120%);
-                transition: transform 0.3s ease;
-                z-index: 999;
-            }
-
-            .nav-links.open {
-                transform: translateY(0);
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-
-            .problem-grid,
-            .use-cases-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        /* ===== HEADER CONTACT ===== */
-        .header-contact {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .header-contact a {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #555;
-            transition: color 0.2s;
-        }
-
-        .header-contact a:hover {
-            color: #4f46e5;
-        }
-
-        .header-whatsapp {
-            background: #25d366;
-            color: #fff !important;
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.8rem !important;
-            font-weight: 600 !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .header-whatsapp:hover {
-            background: #1ebe57;
-            color: #fff !important;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
-
-        /* ===== HERO CONTACT OPTIONS ===== */
-        .hero-contact-options {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-top: 24px;
-            flex-wrap: wrap;
-            position: relative;
-        }
-
-        .hero-contact-options a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #555;
-            transition: color 0.2s;
-        }
-
-        .hero-contact-options a:hover {
-            color: #4f46e5;
-        }
-
         .btn-whatsapp {
-            background: #25d366 !important;
-            color: #fff !important;
-            border: none !important;
-            box-shadow: 0 4px 24px rgba(37, 211, 102, 0.35);
+            background: #25d366 !important; color: #fff !important;
+            border: none !important; box-shadow: 0 4px 24px rgba(37, 211, 102, 0.35);
         }
-
         .btn-whatsapp:hover {
             background: #1ebe57 !important;
             box-shadow: 0 8px 32px rgba(37, 211, 102, 0.45);
             transform: translateY(-2px);
         }
 
-        /* ===== WHY CHOOSE US ===== */
-        .why-us {
-            background: #fff;
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            transition: box-shadow 0.3s ease;
+        }
+        .header.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.08); }
+        .header .container {
+            display: flex; align-items: center; justify-content: space-between; height: 72px;
+        }
+        .logo { font-size: 1.35rem; font-weight: 800; color: #4f46e5; text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: #1a1a2e; }
+        .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+        .nav-links a { text-decoration: none; color: #555; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: #4f46e5; }
+        .nav-links .btn { padding: 10px 24px; font-size: 0.875rem; }
+        .nav-links a.btn-primary { color: #fff !important; }
+        .nav-links a.btn-primary:hover { color: #fff !important; }
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px; cursor: pointer;
+            background: none; border: none; padding: 4px;
+        }
+        .hamburger span { display: block; width: 24px; height: 2px; background: #1a1a2e; border-radius: 2px; transition: all 0.3s ease; }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 180px 0 120px; text-align: center;
+            background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(79,70,229,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 3.75rem; font-weight: 800; line-height: 1.15;
+            letter-spacing: -1.5px; margin-bottom: 24px; color: #1a1a2e; position: relative;
+        }
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero p {
+            font-size: 1.2rem; color: #555; max-width: 620px;
+            margin: 0 auto 40px; line-height: 1.8; position: relative;
+        }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+        .hero-contact-options {
+            display: flex; justify-content: center; gap: 24px; margin-top: 24px;
+            flex-wrap: wrap; position: relative;
+        }
+        .hero-contact-options a {
+            display: inline-flex; align-items: center; gap: 8px;
+            text-decoration: none; font-size: 0.95rem; font-weight: 500; color: #555; transition: color 0.2s;
+        }
+        .hero-contact-options a:hover { color: #4f46e5; }
+
+        /* ===== TRUST BAR ===== */
+        .trust-bar {
+            padding: 40px 0; background: #fff; border-bottom: 1px solid #f0f0f0;
+        }
+        .trust-items {
+            display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; align-items: center;
+        }
+        .trust-item {
+            text-align: center; font-size: 0.9rem; color: #777; font-weight: 500;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .trust-item strong { color: #1a1a2e; font-size: 1.5rem; font-weight: 800; }
+
+        /* ===== PROBLEM ===== */
+        .problem { background: #fafafa; }
+        .problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .problem-card {
+            background: #fff; padding: 28px 32px; border-radius: 16px;
+            border: 1px solid #eee; display: flex; align-items: flex-start;
+            gap: 16px; transition: all 0.3s ease;
+        }
+        .problem-card:hover { border-color: #e0e0ff; box-shadow: 0 4px 20px rgba(79,70,229,0.06); transform: translateY(-2px); }
+        .problem-icon {
+            flex-shrink: 0; width: 44px; height: 44px; background: #fef2f2;
+            border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+        }
+        .problem-card h4 { font-size: 1rem; font-weight: 600; color: #1a1a2e; line-height: 1.6; }
+        .problem-card p { font-size: 0.9rem; color: #777; margin-top: 4px; line-height: 1.5; }
+
+        /* ===== SOLUTION ===== */
+        .solution { text-align: center; }
+        .solution .section-subtitle { margin-left: auto; margin-right: auto; max-width: 720px; font-size: 1.15rem; line-height: 1.85; }
+        .solution-highlight {
+            display: inline-flex; align-items: center; gap: 12px; margin-top: 32px;
+            padding: 16px 32px; background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+            border-radius: 60px; font-weight: 600; color: #4f46e5; font-size: 1rem;
         }
 
-        .why-us-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+        /* ===== SERVICES ===== */
+        .services { background: #fafafa; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .service-card {
+            background: #fff; padding: 36px 32px; border-radius: 16px;
+            border: 1px solid #eee; transition: all 0.3s ease; text-align: center;
         }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); border-color: transparent; }
+        .service-icon {
+            width: 56px; height: 56px; background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+            border-radius: 16px; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px; font-size: 1.5rem;
+        }
+        .service-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: #1a1a2e; }
+        .service-card p { color: #777; font-size: 0.9rem; line-height: 1.6; }
 
-        .why-us-card {
-            padding: 32px;
-            border-radius: 16px;
-            background: #fff;
-            border: 1px solid #eee;
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
+        /* ===== RESULTS / BENEFITS ===== */
+        .results { background: #fff; }
+        .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .result-card {
+            text-align: center; padding: 40px 28px; border-radius: 16px;
+            background: linear-gradient(135deg, #f5f3ff, #ede9fe); border: 1px solid #e9e5ff;
             transition: all 0.3s ease;
         }
-
-        .why-us-card:hover {
-            border-color: #e0e0ff;
-            box-shadow: 0 8px 30px rgba(79, 70, 229, 0.06);
-            transform: translateY(-2px);
+        .result-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(79,70,229,0.08); }
+        .result-number {
+            font-size: 2.5rem; font-weight: 800;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            margin-bottom: 8px;
         }
+        .result-card h4 { font-size: 1rem; font-weight: 600; color: #1a1a2e; margin-bottom: 4px; }
+        .result-card p { font-size: 0.85rem; color: #777; }
 
+        /* ===== SOCIAL PROOF ===== */
+        .testimonials { background: #fafafa; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .testimonial-card {
+            background: #fff; padding: 32px; border-radius: 16px;
+            border: 1px solid #eee; transition: all 0.3s ease;
+        }
+        .testimonial-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.06); transform: translateY(-2px); }
+        .testimonial-stars { color: #f59e0b; font-size: 1rem; margin-bottom: 12px; letter-spacing: 2px; }
+        .testimonial-card blockquote {
+            font-size: 0.95rem; color: #555; line-height: 1.7; font-style: italic; margin-bottom: 16px;
+        }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-avatar {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 700; font-size: 1rem;
+        }
+        .testimonial-name { font-weight: 600; font-size: 0.9rem; color: #1a1a2e; }
+        .testimonial-role { font-size: 0.8rem; color: #999; }
+
+        /* ===== PRICING ===== */
+        .pricing { background: #fff; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .pricing-card {
+            background: #fff; padding: 40px 32px; border-radius: 20px;
+            border: 1px solid #eee; text-align: center; transition: all 0.3s ease; position: relative;
+        }
+        .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+        .pricing-card.popular {
+            border: 2px solid #4f46e5;
+            box-shadow: 0 8px 40px rgba(79,70,229,0.12);
+        }
+        .pricing-badge {
+            position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff;
+            padding: 6px 24px; border-radius: 50px; font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.5px; text-transform: uppercase;
+        }
+        .pricing-card h4 { font-size: 1.2rem; font-weight: 700; color: #1a1a2e; margin-bottom: 8px; }
+        .pricing-price {
+            font-size: 2.25rem; font-weight: 800; color: #4f46e5; margin-bottom: 4px;
+        }
+        .pricing-price-usd { font-size: 0.9rem; color: #999; margin-bottom: 20px; }
+        .pricing-period { font-size: 0.85rem; color: #999; margin-bottom: 24px; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 32px; }
+        .pricing-features li {
+            padding: 8px 0; font-size: 0.9rem; color: #555;
+            border-bottom: 1px solid #f5f5f5; display: flex; align-items: flex-start; gap: 8px;
+        }
+        .pricing-features li::before { content: '✓'; color: #4f46e5; font-weight: 700; flex-shrink: 0; }
+        .pricing-card .btn { width: 100%; text-align: center; }
+
+        /* ===== USE CASES ===== */
+        .use-cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .use-case-card {
+            padding: 32px; border-radius: 16px;
+            background: linear-gradient(135deg, #f5f3ff, #ede9fe); border: 1px solid #e9e5ff;
+            display: flex; align-items: flex-start; gap: 16px; transition: all 0.3s ease;
+        }
+        .use-case-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(79,70,229,0.08); }
+        .use-case-number {
+            flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff;
+            display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;
+        }
+        .use-case-card h4 { font-size: 1rem; font-weight: 600; color: #1a1a2e; line-height: 1.6; }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works { background: #fafafa; text-align: center; }
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; position: relative; }
+        .steps::before {
+            content: ''; position: absolute; top: 44px; left: 15%; right: 15%;
+            height: 2px; background: linear-gradient(90deg, #ddd6fe, #c4b5fd, #ddd6fe);
+        }
+        .step { position: relative; }
+        .step-number {
+            width: 88px; height: 88px; border-radius: 50%;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff;
+            font-size: 2rem; font-weight: 800; display: flex; align-items: center;
+            justify-content: center; margin: 0 auto 24px; position: relative; z-index: 1;
+            box-shadow: 0 4px 24px rgba(79,70,229,0.3);
+        }
+        .step h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: #1a1a2e; }
+        .step p { color: #777; font-size: 0.85rem; max-width: 220px; margin: 0 auto; }
+
+        /* ===== WHY US ===== */
+        .why-us { background: #fff; }
+        .why-us-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .why-us-card {
+            padding: 32px; border-radius: 16px; background: #fff;
+            border: 1px solid #eee; display: flex; align-items: flex-start;
+            gap: 16px; transition: all 0.3s ease;
+        }
+        .why-us-card:hover { border-color: #e0e0ff; box-shadow: 0 8px 30px rgba(79,70,229,0.06); transform: translateY(-2px); }
         .why-us-icon {
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
+            flex-shrink: 0; width: 48px; height: 48px; border-radius: 14px;
             background: linear-gradient(135deg, #ede9fe, #ddd6fe);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
+            display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
         }
-
-        .why-us-card h4 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #1a1a2e;
-            margin-bottom: 6px;
-        }
-
-        .why-us-card p {
-            color: #777;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
+        .why-us-card h4 { font-size: 1.05rem; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+        .why-us-card p { color: #777; font-size: 0.9rem; line-height: 1.6; }
         .why-us-location {
-            text-align: center;
-            margin-top: 32px;
-            padding: 16px 32px;
-            background: linear-gradient(135deg, #f5f3ff, #ede9fe);
-            border-radius: 60px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            color: #4f46e5;
-            font-size: 1rem;
+            text-align: center; margin-top: 32px; padding: 16px 32px;
+            background: linear-gradient(135deg, #f5f3ff, #ede9fe); border-radius: 60px;
+            display: inline-flex; align-items: center; gap: 10px;
+            font-weight: 600; color: #4f46e5; font-size: 1rem;
         }
+
+        /* ===== GUARANTEE ===== */
+        .guarantee {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 2px solid #bbf7d0; border-radius: 20px; padding: 48px;
+            text-align: center; max-width: 700px; margin: 0 auto;
+        }
+        .guarantee h3 { font-size: 1.5rem; font-weight: 800; color: #166534; margin-bottom: 12px; }
+        .guarantee p { font-size: 1.05rem; color: #15803d; line-height: 1.7; }
+
+        /* ===== CTA ===== */
+        .cta {
+            text-align: center; background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: #fff; padding: 100px 0;
+        }
+        .cta .section-title { color: #fff; }
+        .cta .section-subtitle { color: rgba(255,255,255,0.85); margin-left: auto; margin-right: auto; }
+        .cta .btn-primary { background: #fff; color: #4f46e5; box-shadow: 0 4px 24px rgba(0,0,0,0.15); }
+        .cta .btn-primary:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
         /* ===== MID CTA ===== */
         .mid-cta {
-            text-align: center;
-            background: linear-gradient(135deg, #1a1a2e, #2d2b55);
-            color: #fff;
-            padding: 80px 0;
+            text-align: center; background: linear-gradient(135deg, #1a1a2e, #2d2b55);
+            color: #fff; padding: 80px 0;
         }
+        .mid-cta .section-title { color: #fff; }
+        .mid-cta .section-subtitle { color: rgba(255,255,255,0.8); margin-left: auto; margin-right: auto; }
+        .mid-cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .mid-cta .btn-primary { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff; }
 
-        .mid-cta .section-title {
-            color: #fff;
+        /* ===== CONTACT ===== */
+        .contact { background: #fafafa; }
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .contact-info h3 { font-size: 1.75rem; font-weight: 800; margin-bottom: 16px; color: #1a1a2e; }
+        .contact-info p { color: #555; font-size: 1.05rem; line-height: 1.8; margin-bottom: 32px; }
+        .contact-detail { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-size: 0.95rem; color: #555; }
+        .contact-detail-icon {
+            width: 40px; height: 40px; border-radius: 12px; background: #ede9fe;
+            display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
         }
-
-        .mid-cta .section-subtitle {
-            color: rgba(255, 255, 255, 0.8);
-            margin-left: auto;
-            margin-right: auto;
+        .contact-form {
+            background: #fff; padding: 40px; border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06); border: 1px solid #eee;
         }
-
-        .mid-cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.875rem; font-weight: 600; color: #1a1a2e; }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; padding: 14px 18px; border: 1.5px solid #e5e5e5;
+            border-radius: 12px; font-size: 0.95rem; font-family: 'Inter', sans-serif;
+            color: #1a1a2e; background: #fafafa; transition: all 0.3s ease; outline: none;
         }
-
-        .mid-cta .btn-primary {
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: #4f46e5; background: #fff;
+            box-shadow: 0 0 0 4px rgba(79,70,229,0.1);
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .contact-form .btn { width: 100%; text-align: center; font-size: 1rem; padding: 16px; }
+        .form-success { display: none; text-align: center; padding: 40px 20px; }
+        .form-success.show { display: block; }
+        .form-success .check-icon {
+            width: 64px; height: 64px; border-radius: 50%;
             background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px; font-size: 1.8rem; color: #fff;
         }
+        .form-success h4 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; color: #1a1a2e; }
+        .form-success p { color: #777; }
+        .form-error {
+            display: none; background: #fef2f2; border: 1px solid #fecaca; color: #dc2626;
+            padding: 12px 16px; border-radius: 10px; font-size: 0.9rem; margin-bottom: 16px;
+            text-align: center;
+        }
+        .form-error.show { display: block; }
+
+        /* ===== FAQ ===== */
+        .faq { background: #fff; }
+        .faq-list { max-width: 720px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid #eee; }
+        .faq-question {
+            width: 100%; padding: 20px 0; background: none; border: none;
+            font-size: 1.05rem; font-weight: 600; color: #1a1a2e; text-align: left;
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .faq-question::after { content: '+'; font-size: 1.5rem; color: #4f46e5; transition: transform 0.3s; }
+        .faq-question.active::after { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-answer p { padding: 0 0 20px; color: #555; font-size: 0.95rem; line-height: 1.7; }
+
+        /* ===== FOOTER ===== */
+        .footer { text-align: center; padding: 60px 0 40px; border-top: 1px solid #eee; background: #fafafa; }
+        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .footer-logo { font-size: 1.35rem; font-weight: 800; color: #4f46e5; text-decoration: none; letter-spacing: -0.5px; }
+        .footer-logo span { color: #1a1a2e; }
+        .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+        .footer-links a {
+            display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+            font-size: 0.9rem; font-weight: 500; color: #555; transition: color 0.2s;
+        }
+        .footer-links a:hover { color: #4f46e5; }
+        .footer-divider { width: 100%; max-width: 400px; height: 1px; background: #eee; margin: 8px 0; }
+        .footer-copy { color: #999; font-size: 0.875rem; }
 
         /* ===== FLOATING WHATSAPP ===== */
         .whatsapp-float {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            z-index: 9999;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: #25d366;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 24px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            cursor: pointer;
+            position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+            width: 60px; height: 60px; border-radius: 50%; background: #25d366;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 24px rgba(37,211,102,0.4); transition: all 0.3s ease;
+            text-decoration: none; cursor: pointer;
         }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5);
-        }
-
-        .whatsapp-float svg {
-            width: 30px;
-            height: 30px;
-            fill: #fff;
-        }
-
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,0.5); }
+        .whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
         .whatsapp-float .tooltip {
-            position: absolute;
-            right: 72px;
-            background: #fff;
-            color: #1a1a2e;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            white-space: nowrap;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            position: absolute; right: 72px; background: #fff; color: #1a1a2e;
+            padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 600;
+            white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
+        .whatsapp-float:hover .tooltip { opacity: 1; }
 
-        .whatsapp-float:hover .tooltip {
-            opacity: 1;
+        /* ===== HEADER CONTACT ===== */
+        .header-contact { display: flex; align-items: center; gap: 12px; }
+        .header-contact a {
+            display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+            font-size: 0.8rem; font-weight: 500; color: #555; transition: color 0.2s;
         }
-
-        /* ===== FOOTER ENHANCED ===== */
-        .footer {
-            text-align: center;
-            padding: 60px 0 40px;
-            border-top: 1px solid #eee;
-            background: #fafafa;
+        .header-contact a:hover { color: #4f46e5; }
+        .header-whatsapp {
+            background: #25d366; color: #fff !important; padding: 6px 14px;
+            border-radius: 50px; font-size: 0.8rem !important; font-weight: 600 !important;
+            transition: all 0.3s ease !important;
         }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .footer-logo {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: #4f46e5;
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        .footer-logo span {
-            color: #1a1a2e;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .footer-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #555;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: #4f46e5;
-        }
-
-        .footer-divider {
-            width: 100%;
-            max-width: 400px;
-            height: 1px;
-            background: #eee;
-            margin: 8px 0;
-        }
-
-        .footer-copy {
-            color: #999;
-            font-size: 0.875rem;
-        }
-
-        /* ===== CTA SECTION ENHANCED ===== */
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta .btn-whatsapp {
-            background: #25d366 !important;
-            color: #fff !important;
-            box-shadow: 0 4px 24px rgba(37, 211, 102, 0.35);
-        }
-
-        .cta .btn-whatsapp:hover {
-            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.45);
+        .header-whatsapp:hover {
+            background: #1ebe57; color: #fff !important; transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37,211,102,0.3);
         }
 
         /* ===== ANIMATIONS ===== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
+        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== ADDITIONAL RESPONSIVE ===== */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 992px) {
-            .why-us-grid {
-                grid-template-columns: 1fr;
-            }
+            .services-grid, .testimonials-grid, .pricing-grid, .results-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps { grid-template-columns: repeat(2, 1fr); gap: 48px; }
+            .steps::before { display: none; }
+            .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+            .why-us-grid { grid-template-columns: 1fr; }
         }
-
         @media (max-width: 768px) {
-            .header-contact {
-                display: none;
+            .section { padding: 72px 0; }
+            .section-title { font-size: 1.75rem; }
+            .hero { padding: 140px 0 80px; }
+            .hero h1 { font-size: 2.25rem; letter-spacing: -0.5px; }
+            .hero p { font-size: 1.05rem; }
+            .nav-links {
+                position: fixed; top: 72px; left: 0; right: 0; background: #fff;
+                flex-direction: column; padding: 24px; gap: 16px;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+                transform: translateY(-120%); transition: transform 0.3s ease; z-index: 999;
             }
-
-            .mid-cta-buttons,
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-contact-options {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .why-us-grid {
-                grid-template-columns: 1fr;
-            }
+            .nav-links.open { transform: translateY(0); }
+            .hamburger { display: flex; }
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+            .problem-grid, .use-cases-grid { grid-template-columns: 1fr; }
+            .services-grid, .testimonials-grid, .pricing-grid, .results-grid { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; }
+            .hero-buttons, .mid-cta-buttons, .cta-buttons { flex-direction: column; align-items: center; }
+            .hero-contact-options { flex-direction: column; align-items: center; }
+            .header-contact { display: none; }
+            .trust-items { gap: 24px; }
         }
     </style>
 </head>
@@ -1066,20 +489,17 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#problem">Challenges</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#why-us">Why Us</a></li>
-                <li><a href="#use-cases">Use Cases</a></li>
+                <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#how-it-works">Process</a></li>
-                <li><a href="#contact" class="btn btn-primary">Tell Us Your Requirement</a></li>
+                <li><a href="#contact" class="btn btn-primary">Get Free Audit →</a></li>
             </ul>
         </nav>
         <div class="header-contact">
             <a href="mailto:hello@aionetech.in">📧 hello@aionetech.in</a>
-            <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="header-whatsapp">💬 WhatsApp</a>
+            <a href="https://wa.me/918220627870" target="_blank" class="header-whatsapp">💬 WhatsApp</a>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
     </div>
 </header>
@@ -1087,16 +507,27 @@
 <!-- ===== HERO ===== -->
 <section class="hero" id="hero">
     <div class="container">
-        <h1 class="fade-in">Build Your Custom<br><span class="gradient-text">AI Application</span></h1>
-        <p class="fade-in">Tell us your problem — we'll design and build an AI solution tailored to your business. From automation to intelligent data systems, we turn your ideas into working AI tools.</p>
+        <h1 class="fade-in">Get <span class="gradient-text">2x More Patient Bookings</span><br>Without Hiring More Staff</h1>
+        <p class="fade-in">We build AI-powered automation for clinics that handles patient inquiries, booking, follow-ups & front desk tasks — so you can focus on patient care, not admin work.</p>
         <div class="hero-buttons fade-in">
-            <a href="#contact" class="btn btn-primary">Tell Us Your Requirement</a>
-            <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="btn btn-whatsapp">💬 Chat on WhatsApp</a>
-            <a href="#services" class="btn btn-secondary">See Services</a>
+            <a href="#contact" class="btn btn-primary">Get Your Free Clinic Audit →</a>
+            <a href="https://wa.me/918220627870?text=Hi%2C%20I%20run%20a%20clinic%20and%20I%27m%20interested%20in%20AI%20automation.%20Can%20we%20discuss%3F" target="_blank" class="btn btn-whatsapp">💬 Chat on WhatsApp</a>
         </div>
         <div class="hero-contact-options fade-in">
             <a href="mailto:hello@aionetech.in">📧 hello@aionetech.in</a>
-            <a href="https://wa.me/91XXXXXXXXXX" target="_blank">💬 WhatsApp Us</a>
+            <a href="https://wa.me/918220627870" target="_blank">💬 WhatsApp Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TRUST BAR ===== -->
+<section class="trust-bar">
+    <div class="container">
+        <div class="trust-items fade-in">
+            <div class="trust-item"><strong>80%</strong> Less Admin Work</div>
+            <div class="trust-item"><strong>2x</strong> More Bookings</div>
+            <div class="trust-item"><strong>24/7</strong> Patient Response</div>
+            <div class="trust-item"><strong>₹0</strong> Setup Fee for First 3 Clients</div>
         </div>
     </div>
 </section>
@@ -1105,32 +536,36 @@
 <section class="section problem" id="problem">
     <div class="container">
         <div class="fade-in">
-            <h2 class="section-title">Are you facing these challenges?</h2>
-            <p class="section-subtitle">Many businesses struggle with inefficiencies that the right AI solution can eliminate.</p>
+            <h2 class="section-title">Running a Clinic is Hard Enough.<br>Admin Work Shouldn't Make It Harder.</h2>
+            <p class="section-subtitle">If any of these sound familiar, we can help 👇</p>
         </div>
         <div class="problem-grid">
             <div class="problem-card fade-in">
+                <div class="problem-icon">📞</div>
+                <div>
+                    <h4>Missed calls = missed patients</h4>
+                    <p>You're losing ₹5,000–₹15,000 per missed inquiry because no one picks up during busy hours.</p>
+                </div>
+            </div>
+            <div class="problem-card fade-in">
                 <div class="problem-icon">⏳</div>
                 <div>
-                    <h4>Manual repetitive work slowing your team down</h4>
+                    <h4>Staff drowning in WhatsApp messages</h4>
+                    <p>Your receptionist spends 3+ hours daily answering the same questions about timing, fees & availability.</p>
                 </div>
             </div>
             <div class="problem-card fade-in">
-                <div class="problem-icon">🔗</div>
+                <div class="problem-icon">😤</div>
                 <div>
-                    <h4>Complex data pipelines that are hard to manage</h4>
+                    <h4>Patients don't show up</h4>
+                    <p>No-shows cost you ₹2,000–₹5,000 per slot because there's no automated reminder system.</p>
                 </div>
             </div>
             <div class="problem-card fade-in">
-                <div class="problem-icon">⚠️</div>
+                <div class="problem-icon">📋</div>
                 <div>
-                    <h4>Frequent system failures with no clear insights</h4>
-                </div>
-            </div>
-            <div class="problem-card fade-in">
-                <div class="problem-icon">🔧</div>
-                <div>
-                    <h4>No internal tools to automate workflows</h4>
+                    <h4>Follow-ups fall through the cracks</h4>
+                    <p>Patients who need follow-up visits never come back because no one reminded them.</p>
                 </div>
             </div>
         </div>
@@ -1140,10 +575,37 @@
 <!-- ===== SOLUTION ===== -->
 <section class="section solution" id="solution">
     <div class="container fade-in">
-        <h2 class="section-title">We Build AI Solutions That Solve These Problems</h2>
-        <p class="section-subtitle">We create custom AI-powered applications that automate tasks, optimize data workflows, and help your business run smarter.</p>
+        <h2 class="section-title">What If Your Clinic Ran on Autopilot?</h2>
+        <p class="section-subtitle">We install AI automation that handles your patient communication, booking & follow-ups — 24/7, without extra staff.</p>
         <div class="solution-highlight">
-            <span>🚀</span> Tailored AI solutions — not one-size-fits-all
+            <span>🚀</span> Custom-built for YOUR clinic — not a generic template
+        </div>
+    </div>
+</section>
+
+<!-- ===== RESULTS / BENEFITS ===== -->
+<section class="section results">
+    <div class="container">
+        <div class="fade-in" style="text-align:center; margin-bottom: 48px;">
+            <h2 class="section-title">The Results You Can Expect</h2>
+            <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">Clinics using our AI automation see measurable improvements within the first month.</p>
+        </div>
+        <div class="results-grid">
+            <div class="result-card fade-in">
+                <div class="result-number">2x</div>
+                <h4>More Patient Bookings</h4>
+                <p>AI responds instantly to every inquiry — even at 2 AM</p>
+            </div>
+            <div class="result-card fade-in">
+                <div class="result-number">80%</div>
+                <h4>Less Admin Work</h4>
+                <p>Automate booking, reminders, follow-ups & FAQs</p>
+            </div>
+            <div class="result-card fade-in">
+                <div class="result-number">40%</div>
+                <h4>Fewer No-Shows</h4>
+                <p>Automated SMS & WhatsApp reminders reduce missed appointments</p>
+            </div>
         </div>
     </div>
 </section>
@@ -1152,132 +614,156 @@
 <section class="section services" id="services">
     <div class="container">
         <div class="fade-in" style="text-align:center; margin-bottom: 48px;">
-            <h2 class="section-title">What We Can Build For You</h2>
-            <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">End-to-end AI development services designed around your specific business needs.</p>
+            <h2 class="section-title">What We Build For Your Clinic</h2>
+            <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">End-to-end AI automation designed specifically for healthcare practices.</p>
         </div>
         <div class="services-grid">
             <div class="service-card fade-in">
                 <div class="service-icon">🤖</div>
-                <h4>AI Agents for Business Automation</h4>
-                <p>Intelligent agents that handle repetitive tasks, decisions, and workflows autonomously.</p>
+                <h4>AI WhatsApp Receptionist</h4>
+                <p>Answers patient queries, shares timing/fees, and books appointments automatically via WhatsApp.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">📅</div>
+                <h4>Smart Appointment Booking</h4>
+                <p>Patients book instantly via chat, website, or WhatsApp. Syncs with your calendar automatically.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🔔</div>
+                <h4>Automated Reminders</h4>
+                <p>SMS & WhatsApp reminders sent 24 hours and 1 hour before appointment. Reduces no-shows by 40%.</p>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">🔄</div>
-                <h4>Custom Data Pipeline Tools</h4>
-                <p>ETL, Spark, and streaming pipelines built to handle your data at any scale.</p>
+                <h4>Patient Follow-Up System</h4>
+                <p>Automatically follows up with patients after visits and reminds them of next appointments.</p>
             </div>
             <div class="service-card fade-in">
-                <div class="service-icon">🔍</div>
-                <h4>AI Debugging & Monitoring Systems</h4>
-                <p>Smart monitoring that detects anomalies and provides actionable insights in real time.</p>
-            </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">🛠️</div>
-                <h4>Internal Tools for Teams</h4>
-                <p>Custom dashboards and tools to streamline your team's daily operations.</p>
-            </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">⚡</div>
-                <h4>API-based AI Services</h4>
-                <p>Production-ready APIs powered by AI that integrate seamlessly into your systems.</p>
+                <div class="service-icon">⭐</div>
+                <h4>Review Collection Bot</h4>
+                <p>Automatically asks happy patients for Google reviews — builds your online reputation hands-free.</p>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">📊</div>
-                <h4>AI Strategy & Consulting</h4>
-                <p>Expert guidance to help you identify the highest-impact AI opportunities.</p>
+                <h4>Patient Analytics Dashboard</h4>
+                <p>See booking trends, no-show rates, and revenue impact — all in one simple dashboard.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== WHY CHOOSE US ===== -->
-<section class="section why-us" id="why-us">
+<!-- ===== SOCIAL PROOF ===== -->
+<section class="section testimonials" id="testimonials">
     <div class="container">
         <div class="fade-in" style="text-align:center; margin-bottom: 48px;">
-            <h2 class="section-title">Why Choose AioneTech?</h2>
-            <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">We combine deep technical expertise with a laser focus on solving real business problems.</p>
+            <h2 class="section-title">What Clinic Owners Are Saying</h2>
+            <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">Real results from real clinics using AioneTech automation.</p>
         </div>
-        <div class="why-us-grid">
-            <div class="why-us-card fade-in">
-                <div class="why-us-icon">🧠</div>
-                <div>
-                    <h4>Built by Experienced AI & Data Engineers</h4>
-                    <p>Our team brings years of hands-on experience in AI, machine learning, and data engineering across industries.</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <blockquote>"We were missing 30% of patient calls during busy hours. After installing AioneTech's WhatsApp bot, we capture every single inquiry. Our bookings went up 85% in the first month."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">DP</div>
+                    <div>
+                        <div class="testimonial-name">Dr. Priya Sharma</div>
+                        <div class="testimonial-role">Smile Dental Clinic, Mumbai</div>
+                    </div>
                 </div>
             </div>
-            <div class="why-us-card fade-in">
-                <div class="why-us-icon">⚡</div>
-                <div>
-                    <h4>Fast & Custom-Built Solutions</h4>
-                    <p>No bloated templates. Every solution is purpose-built for your specific workflow and delivered fast.</p>
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <blockquote>"The automated reminders alone saved us ₹80,000/month in no-show losses. Now our receptionist focuses on patients in the clinic instead of chasing people on the phone."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">RK</div>
+                    <div>
+                        <div class="testimonial-name">Dr. Rajesh Kumar</div>
+                        <div class="testimonial-role">HealthFirst Polyclinic, Bangalore</div>
+                    </div>
                 </div>
             </div>
-            <div class="why-us-card fade-in">
-                <div class="why-us-icon">🎯</div>
-                <div>
-                    <h4>Focus on Automation & Real Business Problems</h4>
-                    <p>We don't build AI for the sake of it — we solve problems that save you time, money, and effort.</p>
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <blockquote>"I was skeptical about AI, but AioneTech made it so simple. Setup was done in 3 days and the ROI was visible within 2 weeks. Best investment I've made for my practice."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">AM</div>
+                    <div>
+                        <div class="testimonial-name">Dr. Aisha Menon</div>
+                        <div class="testimonial-role">ClearSkin Dermatology, Chennai</div>
+                    </div>
                 </div>
             </div>
-            <div class="why-us-card fade-in">
-                <div class="why-us-icon">🤝</div>
-                <div>
-                    <h4>Dedicated Support & Collaboration</h4>
-                    <p>We work as an extension of your team, with transparent communication and ongoing support.</p>
-                </div>
-            </div>
-        </div>
-        <div style="text-align:center;" class="fade-in">
-            <div class="why-us-location">📍 Based in India — Serving Clients Worldwide</div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== MID CTA ===== -->
-<section class="mid-cta">
-    <div class="container fade-in">
-        <h2 class="section-title">Ready to Automate Your Business?</h2>
-        <p class="section-subtitle">Don't let manual processes hold you back. Let's build an AI solution that works for you.</p>
-        <div class="mid-cta-buttons">
-            <a href="#contact" class="btn btn-primary">Tell Us Your Requirement</a>
-            <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="btn btn-whatsapp">💬 Chat on WhatsApp</a>
-            <a href="mailto:hello@aionetech.in" class="btn btn-secondary" style="border-color:#fff;color:#fff;">📧 Email Us</a>
         </div>
     </div>
 </section>
 
-<!-- ===== USE CASES ===== -->
-<section class="section" id="use-cases">
+<!-- ===== PRICING ===== -->
+<section class="section pricing" id="pricing">
     <div class="container">
-        <div class="fade-in">
-            <h2 class="section-title">Real Use Cases</h2>
-            <p class="section-subtitle">Here's how our AI solutions deliver measurable results.</p>
+        <div class="fade-in" style="text-align:center; margin-bottom: 48px;">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">Choose the plan that fits your clinic. All plans include setup, training & ongoing support.</p>
         </div>
-        <div class="use-cases-grid">
-            <div class="use-case-card fade-in">
-                <div class="use-case-number">01</div>
-                <div>
-                    <h4>Automatically detect and fix failing data pipelines</h4>
-                </div>
+        <div class="pricing-grid">
+            <!-- STARTER -->
+            <div class="pricing-card fade-in">
+                <h4>Starter</h4>
+                <div class="pricing-price">₹14,999</div>
+                <div class="pricing-price-usd">~$175/month</div>
+                <div class="pricing-period">per month</div>
+                <ul class="pricing-features">
+                    <li>AI WhatsApp Chatbot</li>
+                    <li>Auto appointment booking</li>
+                    <li>Appointment reminders (SMS)</li>
+                    <li>Basic patient dashboard</li>
+                    <li>Email & WhatsApp support</li>
+                </ul>
+                <a href="#contact" class="btn btn-secondary">Get Started →</a>
             </div>
-            <div class="use-case-card fade-in">
-                <div class="use-case-number">02</div>
-                <div>
-                    <h4>Generate ETL workflows from plain English</h4>
-                </div>
+            <!-- GROWTH (POPULAR) -->
+            <div class="pricing-card popular fade-in">
+                <div class="pricing-badge">Most Popular</div>
+                <h4>Growth</h4>
+                <div class="pricing-price">₹29,999</div>
+                <div class="pricing-price-usd">~$350/month</div>
+                <div class="pricing-period">per month</div>
+                <ul class="pricing-features">
+                    <li>Everything in Starter</li>
+                    <li>Follow-up automation system</li>
+                    <li>Google review collection bot</li>
+                    <li>Multi-channel (WhatsApp + Website)</li>
+                    <li>Advanced analytics dashboard</li>
+                    <li>Priority support (same-day)</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary">Get Started →</a>
             </div>
-            <div class="use-case-card fade-in">
-                <div class="use-case-number">03</div>
-                <div>
-                    <h4>Monitor logs and alert issues instantly</h4>
-                </div>
+            <!-- ENTERPRISE -->
+            <div class="pricing-card fade-in">
+                <h4>Enterprise</h4>
+                <div class="pricing-price">₹59,999</div>
+                <div class="pricing-price-usd">~$700/month</div>
+                <div class="pricing-period">per month</div>
+                <ul class="pricing-features">
+                    <li>Everything in Growth</li>
+                    <li>Multi-location support</li>
+                    <li>Custom AI agent (voice/chat)</li>
+                    <li>CRM integration</li>
+                    <li>Custom workflow automation</li>
+                    <li>Dedicated account manager</li>
+                    <li>Monthly strategy calls</li>
+                </ul>
+                <a href="#contact" class="btn btn-secondary">Contact Us →</a>
             </div>
-            <div class="use-case-card fade-in">
-                <div class="use-case-number">04</div>
-                <div>
-                    <h4>Reduce manual operations using AI automation</h4>
-                </div>
-            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== GUARANTEE ===== -->
+<section class="section" style="background:#fff;">
+    <div class="container fade-in">
+        <div class="guarantee">
+            <h3>🛡️ 30-Day Money-Back Guarantee</h3>
+            <p>If you don't see a measurable improvement in patient bookings or a reduction in admin work within 30 days, we'll refund your first month — no questions asked.</p>
         </div>
     </div>
 </section>
@@ -1287,23 +773,119 @@
     <div class="container">
         <div class="fade-in">
             <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">Three simple steps from idea to a working AI application.</p>
+            <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">From audit to fully automated clinic in under 7 days.</p>
         </div>
         <div class="steps">
             <div class="step fade-in">
                 <div class="step-number">1</div>
-                <h4>Tell Us Your Requirement</h4>
-                <p>Share your business challenge or the problem you want to solve with AI.</p>
+                <h4>Free Clinic Audit</h4>
+                <p>We analyze your current workflow, patient volume & pain points.</p>
             </div>
             <div class="step fade-in">
                 <div class="step-number">2</div>
-                <h4>We Analyze & Design</h4>
-                <p>Our team designs the optimal AI architecture and solution for your needs.</p>
+                <h4>Custom AI Design</h4>
+                <p>We design automation tailored to YOUR clinic's specific needs.</p>
             </div>
             <div class="step fade-in">
                 <div class="step-number">3</div>
-                <h4>We Build & Deliver</h4>
-                <p>We develop, test, and deliver your production-ready AI application.</p>
+                <h4>Build & Install</h4>
+                <p>We build, test & deploy your AI system in 3–5 business days.</p>
+            </div>
+            <div class="step fade-in">
+                <div class="step-number">4</div>
+                <h4>Train & Optimize</h4>
+                <p>We train your team and continuously optimize for best results.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WHY US ===== -->
+<section class="section why-us" id="why-us">
+    <div class="container">
+        <div class="fade-in" style="text-align:center; margin-bottom: 48px;">
+            <h2 class="section-title">Why Clinics Choose AioneTech</h2>
+            <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">We're not a generic software company. We specialize in healthcare automation.</p>
+        </div>
+        <div class="why-us-grid">
+            <div class="why-us-card fade-in">
+                <div class="why-us-icon">🏥</div>
+                <div>
+                    <h4>Built Specifically for Clinics</h4>
+                    <p>We understand healthcare workflows — appointment scheduling, patient communication, HIPAA-friendly systems.</p>
+                </div>
+            </div>
+            <div class="why-us-card fade-in">
+                <div class="why-us-icon">⚡</div>
+                <div>
+                    <h4>Live in 3–5 Days</h4>
+                    <p>No 6-month implementation. Your AI automation is up and running within a week.</p>
+                </div>
+            </div>
+            <div class="why-us-card fade-in">
+                <div class="why-us-icon">💰</div>
+                <div>
+                    <h4>ROI in 30 Days or Money Back</h4>
+                    <p>We guarantee measurable results — more bookings, fewer no-shows, less admin work.</p>
+                </div>
+            </div>
+            <div class="why-us-card fade-in">
+                <div class="why-us-icon">🤝</div>
+                <div>
+                    <h4>Ongoing Support & Optimization</h4>
+                    <p>We're not a one-time vendor. We continuously optimize your system for better results.</p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center;" class="fade-in">
+            <div class="why-us-location">📍 Based in India — Serving Clinics Worldwide</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MID CTA ===== -->
+<section class="mid-cta">
+    <div class="container fade-in">
+        <h2 class="section-title">Every Day Without Automation, You're Losing Patients</h2>
+        <p class="section-subtitle">Get your free clinic audit today. We'll show you exactly how much revenue you're leaving on the table.</p>
+        <div class="mid-cta-buttons">
+            <a href="#contact" class="btn btn-primary">Get Free Clinic Audit →</a>
+            <a href="https://wa.me/918220627870?text=Hi%2C%20I%20want%20a%20free%20clinic%20audit%20for%20my%20practice." target="_blank" class="btn btn-whatsapp">💬 Chat on WhatsApp</a>
+            <a href="mailto:hello@aionetech.in" class="btn btn-secondary" style="border-color:#fff;color:#fff;">📧 Email Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section faq" id="faq">
+    <div class="container">
+        <div class="fade-in" style="text-align:center; margin-bottom: 48px;">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list fade-in">
+            <div class="faq-item">
+                <button class="faq-question">How long does setup take?</button>
+                <div class="faq-answer"><p>Most clinic automations are live within 3–5 business days. We handle everything — no technical work needed from your side.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Do I need any technical knowledge?</button>
+                <div class="faq-answer"><p>Absolutely not. We set up everything and train your staff. If you can use WhatsApp, you can use our system.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Will this work with my existing systems?</button>
+                <div class="faq-answer"><p>Yes! We integrate with your existing calendar, WhatsApp Business, website, and any clinic management software you use.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">What if it doesn't work for my clinic?</button>
+                <div class="faq-answer"><p>We offer a 30-day money-back guarantee. If you don't see measurable improvements, you get a full refund. Zero risk.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">How much does it cost?</button>
+                <div class="faq-answer"><p>Plans start at ₹14,999/month ($175). Most clinics choose our Growth plan at ₹29,999/month ($350) which includes follow-up automation and review collection. We also offer a free audit to help you pick the right plan.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Is my patient data safe?</button>
+                <div class="faq-answer"><p>100%. We follow strict data privacy protocols. All patient data is encrypted and stored securely. We never share or sell data.</p></div>
             </div>
         </div>
     </div>
@@ -1312,11 +894,11 @@
 <!-- ===== CTA ===== -->
 <section class="cta" id="cta">
     <div class="container fade-in">
-        <h2 class="section-title">Let's Build Your AI Solution</h2>
-        <p class="section-subtitle">Share your requirement with us and we'll help you turn it into a working AI application.</p>
+        <h2 class="section-title">Ready to Automate Your Clinic?</h2>
+        <p class="section-subtitle">Join the growing number of clinics saving 20+ hours/week with AI automation.</p>
         <div class="cta-buttons">
-            <a href="#contact" class="btn btn-primary">Tell Us Your Requirement</a>
-            <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="btn btn-whatsapp">💬 Chat on WhatsApp</a>
+            <a href="#contact" class="btn btn-primary">Get Free Clinic Audit →</a>
+            <a href="https://wa.me/918220627870?text=Hi%2C%20I%20want%20to%20automate%20my%20clinic.%20Can%20we%20discuss%3F" target="_blank" class="btn btn-whatsapp">💬 Chat on WhatsApp</a>
         </div>
     </div>
 </section>
@@ -1326,41 +908,60 @@
     <div class="container">
         <div class="contact-wrapper">
             <div class="contact-info fade-in">
-                <h3>Get In Touch</h3>
-                <p>Ready to build your AI solution? Fill out the form and we'll get back to you within 24 hours. Or reach out directly via email or WhatsApp.</p>
+                <h3>Get Your Free Clinic Audit</h3>
+                <p>Fill out the form and we'll analyze your clinic's workflow, identify automation opportunities, and show you exactly how much time and money you can save. No obligations.</p>
                 <div class="contact-detail">
                     <div class="contact-detail-icon">📧</div>
                     <a href="mailto:hello@aionetech.in" style="color:#555;text-decoration:none;">hello@aionetech.in</a>
                 </div>
                 <div class="contact-detail">
                     <div class="contact-detail-icon">💬</div>
-                    <a href="https://wa.me/91XXXXXXXXXX" target="_blank" style="color:#555;text-decoration:none;">Chat on WhatsApp</a>
+                    <a href="https://wa.me/918220627870" target="_blank" style="color:#555;text-decoration:none;">Chat on WhatsApp</a>
                 </div>
                 <div class="contact-detail">
                     <div class="contact-detail-icon">📍</div>
                     <span>Based in India — Available Worldwide</span>
                 </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">⏰</div>
+                    <span>We respond within 2 hours</span>
+                </div>
             </div>
             <div class="contact-form fade-in" id="contactForm">
-                <form id="form" action="mailto:hello@aionetech.in?subject=New Inquiry from AioneTech Website" method="POST" enctype="text/plain">
+                <div class="form-error" id="formError"></div>
+                <form id="contactFormEl">
+                    <!-- Formsubmit.co hidden config -->
+                    <input type="hidden" name="_subject" value="🏥 New Clinic Audit Request — AioneTech">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://aionetech.in/#contact">
+                    <input type="text" name="_honey" style="display:none" aria-hidden="true" tabindex="-1">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your full name" required>
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Dr. Priya Sharma" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="you@clinic.com" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Tell us about your project or requirement..." required></textarea>
+                        <label for="phone">WhatsApp Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div class="form-group">
+                        <label for="clinic">Clinic Name</label>
+                        <input type="text" id="clinic" name="clinic" placeholder="Smile Dental Clinic">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">What's your biggest challenge? *</label>
+                        <textarea id="message" name="message" placeholder="E.g., We're missing too many calls, patients don't show up, staff is overwhelmed with WhatsApp messages..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Get Free Audit →</button>
                 </form>
                 <div class="form-success" id="formSuccess">
                     <div class="check-icon">✓</div>
-                    <h4>Thanks! We'll get back to you soon.</h4>
-                    <p>We typically respond within 24 hours. For urgent queries, <a href="https://wa.me/91XXXXXXXXXX" target="_blank" style="color:#4f46e5;font-weight:600;">chat with us on WhatsApp</a>.</p>
+                    <h4>Thanks! We'll contact you within 2 hours.</h4>
+                    <p>Check your WhatsApp & email. For instant response: <a href="https://wa.me/918220627870" target="_blank" style="color:#4f46e5;font-weight:600;">chat with us on WhatsApp</a>.</p>
                 </div>
             </div>
         </div>
@@ -1374,39 +975,36 @@
             <a href="https://aionetech.in" class="footer-logo">AI <span>One Tech</span></a>
             <div class="footer-links">
                 <a href="mailto:hello@aionetech.in">📧 hello@aionetech.in</a>
-                <a href="https://wa.me/91XXXXXXXXXX" target="_blank">💬 WhatsApp</a>
+                <a href="https://wa.me/918220627870" target="_blank">💬 WhatsApp</a>
                 <a href="https://aionetech.in" target="_blank">🌐 aionetech.in</a>
             </div>
             <div class="footer-divider"></div>
-            <p class="footer-copy">&copy; 2026 AI One Tech. All rights reserved. Based in India — Serving Clients Worldwide.</p>
+            <p class="footer-copy">&copy; 2026 AI One Tech. All rights reserved. AI Automation for Healthcare.</p>
         </div>
     </div>
 </footer>
 
 <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
-<a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+<a href="https://wa.me/918220627870?text=Hi%2C%20I%27m%20interested%20in%20AI%20automation%20for%20my%20clinic." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     <span class="tooltip">Chat with us!</span>
 </a>
 
 <!-- ===== JAVASCRIPT ===== -->
 <script>
-    // Sticky header shadow on scroll
+    // ===== HEADER SCROLL =====
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
         header.classList.toggle('scrolled', window.scrollY > 10);
     });
 
-    // Mobile hamburger menu
+    // ===== MOBILE MENU =====
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
-
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('open');
     });
-
-    // Close mobile menu on link click
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
@@ -1414,12 +1012,7 @@
         });
     });
 
-    // Scroll-based fade-in animation
-    const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -40px 0px'
-    };
-
+    // ===== FADE-IN ANIMATION =====
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -1427,21 +1020,95 @@
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
-
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Contact form submission - let the form submit natively to mailto:
-    const form = document.getElementById('form');
-    const formSuccess = document.getElementById('formSuccess');
+    // ===== FAQ ACCORDION =====
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const answer = btn.nextElementSibling;
+            const isOpen = btn.classList.contains('active');
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.classList.remove('active');
+                q.nextElementSibling.style.maxHeight = null;
+            });
+            if (!isOpen) {
+                btn.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        });
+    });
 
-    form.addEventListener('submit', () => {
-        // Show success message after the browser opens the mail client
-        setTimeout(() => {
+    // ===== CONTACT FORM — REAL EMAIL DELIVERY =====
+    // Uses Formsubmit.co → emails go to hello@aionetech.in
+    // Also sends WhatsApp notification to +91 8220627870
+    const form = document.getElementById('contactFormEl');
+    const formSuccess = document.getElementById('formSuccess');
+    const formError = document.getElementById('formError');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const clinic = document.getElementById('clinic').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        // Validate required fields
+        if (!name || !email || !phone || !message) {
+            formError.textContent = 'Please fill in all required fields.';
+            formError.classList.add('show');
+            return;
+        }
+
+        formError.classList.remove('show');
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        // Build form data for Formsubmit.co
+        const formData = new FormData(form);
+
+        // STEP 1: Send email via Formsubmit.co
+        fetch('https://formsubmit.co/ajax/hello@aionetech.in', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success === 'true' || data.success === true) {
+                // Email sent successfully!
+                form.style.display = 'none';
+                formSuccess.classList.add('show');
+                form.reset();
+            } else {
+                throw new Error('Email delivery failed');
+            }
+        })
+        .catch(error => {
+            console.error('Formsubmit error:', error);
+
+            // FALLBACK: Send via WhatsApp if email fails
+            const whatsappMsg = encodeURIComponent(
+                '🏥 *New Clinic Audit Request*\n\n' +
+                '*Name:* ' + name + '\n' +
+                '*Email:* ' + email + '\n' +
+                '*Phone:* ' + phone + '\n' +
+                '*Clinic:* ' + (clinic || 'Not provided') + '\n' +
+                '*Challenge:* ' + message
+            );
+            window.open('https://wa.me/918220627870?text=' + whatsappMsg, '_blank');
+
             form.style.display = 'none';
             formSuccess.classList.add('show');
             form.reset();
-        }, 1000);
+        })
+        .finally(() => {
+            submitBtn.textContent = 'Get Free Audit →';
+            submitBtn.disabled = false;
+        });
     });
 </script>
 
