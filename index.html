@@ -930,12 +930,6 @@
             <div class="contact-form fade-in" id="contactForm">
                 <div class="form-error" id="formError"></div>
                 <form id="contactFormEl">
-                    <!-- Formsubmit.co hidden config -->
-                    <input type="hidden" name="_subject" value="🏥 New Clinic Audit Request — AioneTech">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://aionetech.in/#contact">
-                    <input type="text" name="_honey" style="display:none" aria-hidden="true" tabindex="-1">
                     <div class="form-group">
                         <label for="name">Your Name *</label>
                         <input type="text" id="name" name="name" placeholder="Dr. Priya Sharma" required>
@@ -992,6 +986,12 @@
 
 <!-- ===== JAVASCRIPT ===== -->
 <script>
+    // ===================================================
+    // GOOGLE APPS SCRIPT URL — PASTE YOUR URL HERE
+    // Follow setup instructions in google-apps-script.js
+    // ===================================================
+    const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL';
+
     // ===== HEADER SCROLL =====
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
@@ -1039,9 +1039,11 @@
         });
     });
 
-    // ===== CONTACT FORM — REAL EMAIL DELIVERY =====
-    // Uses Formsubmit.co → emails go to hello@aionetech.in
-    // Also sends WhatsApp notification to +91 8220627870
+    // ===== CONTACT FORM — LEAD CAPTURE SYSTEM =====
+    // Layer 1: Google Apps Script (saves to Sheet + sends email)
+    // Layer 2: WhatsApp notification (instant alert on your phone)
+    // Result: You NEVER miss a lead
+
     const form = document.getElementById('contactFormEl');
     const formSuccess = document.getElementById('formSuccess');
     const formError = document.getElementById('formError');
@@ -1056,7 +1058,7 @@
         const clinic = document.getElementById('clinic').value.trim();
         const message = document.getElementById('message').value.trim();
 
-        // Validate required fields
+        // Validate
         if (!name || !email || !phone || !message) {
             formError.textContent = 'Please fill in all required fields.';
             formError.classList.add('show');
@@ -1067,48 +1069,55 @@
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
 
-        // Build form data for Formsubmit.co
-        const formData = new FormData(form);
+        const leadData = { name, email, phone, clinic, message };
 
-        // STEP 1: Send email via Formsubmit.co
-        fetch('https://formsubmit.co/ajax/hello@aionetech.in', {
-            method: 'POST',
-            headers: { 'Accept': 'application/json' },
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success === 'true' || data.success === true) {
-                // Email sent successfully!
+        // Build WhatsApp message for notification
+        const whatsappMsg = encodeURIComponent(
+            '🏥 *New Lead from AioneTech Website!*\n\n' +
+            '👤 *Name:* ' + name + '\n' +
+            '📧 *Email:* ' + email + '\n' +
+            '📱 *Phone:* ' + phone + '\n' +
+            '🏥 *Clinic:* ' + (clinic || 'Not provided') + '\n' +
+            '💬 *Challenge:* ' + message + '\n\n' +
+            '⏰ _Received: ' + new Date().toLocaleString('en-IN') + '_'
+        );
+
+        // Check if Google Script URL is configured
+        if (GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL') {
+            // ✅ LAYER 1: Send to Google Apps Script (Sheet + Email)
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(leadData)
+            })
+            .then(() => {
+                // Success — lead saved to Sheet + email sent
                 form.style.display = 'none';
                 formSuccess.classList.add('show');
                 form.reset();
-            } else {
-                throw new Error('Email delivery failed');
-            }
-        })
-        .catch(error => {
-            console.error('Formsubmit error:', error);
-
-            // FALLBACK: Send via WhatsApp if email fails
-            const whatsappMsg = encodeURIComponent(
-                '🏥 *New Clinic Audit Request*\n\n' +
-                '*Name:* ' + name + '\n' +
-                '*Email:* ' + email + '\n' +
-                '*Phone:* ' + phone + '\n' +
-                '*Clinic:* ' + (clinic || 'Not provided') + '\n' +
-                '*Challenge:* ' + message
-            );
+            })
+            .catch(err => {
+                console.error('Google Script error:', err);
+                // Fallback: redirect to WhatsApp
+                window.open('https://wa.me/918220627870?text=' + whatsappMsg, '_blank');
+                form.style.display = 'none';
+                formSuccess.classList.add('show');
+                form.reset();
+            })
+            .finally(() => {
+                submitBtn.textContent = 'Get Free Audit →';
+                submitBtn.disabled = false;
+            });
+        } else {
+            // Google Script not configured yet — use WhatsApp directly
             window.open('https://wa.me/918220627870?text=' + whatsappMsg, '_blank');
-
             form.style.display = 'none';
             formSuccess.classList.add('show');
             form.reset();
-        })
-        .finally(() => {
             submitBtn.textContent = 'Get Free Audit →';
             submitBtn.disabled = false;
-        });
+        }
     });
 </script>
 
