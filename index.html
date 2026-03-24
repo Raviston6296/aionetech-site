@@ -954,8 +954,8 @@
                 </form>
                 <div class="form-success" id="formSuccess">
                     <div class="check-icon">✓</div>
-                    <h4>Thanks! We'll contact you within 2 hours.</h4>
-                    <p>Check your WhatsApp & email. For instant response: <a href="https://wa.me/918220627870" target="_blank" style="color:#4f46e5;font-weight:600;">chat with us on WhatsApp</a>.</p>
+                    <h4>Thank you! We've received your request.</h4>
+                    <p>Our team will review your details and get back to you within 24 hours. We look forward to helping your clinic grow! 🚀</p>
                 </div>
             </div>
         </div>
@@ -1039,9 +1039,9 @@
         });
     });
 
-    // ===== CONTACT FORM — LEAD CAPTURE SYSTEM =====
-    // GUARANTEED: Every lead reaches you via WhatsApp
-    // BONUS: If Google Script is set up, also saves to Sheet + sends email
+    // ===== CONTACT FORM — LEAD CAPTURE =====
+    // Sends lead to Google Sheet + Email via Google Apps Script
+    // Shows success message — no WhatsApp redirect
 
     const form = document.getElementById('contactFormEl');
     const formSuccess = document.getElementById('formSuccess');
@@ -1068,39 +1068,27 @@
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
 
-        // Build WhatsApp message
-        const whatsappMsg = encodeURIComponent(
-            '🏥 *New Lead — AioneTech*\n\n' +
-            '👤 *Name:* ' + name + '\n' +
-            '📧 *Email:* ' + email + '\n' +
-            '📱 *Phone:* ' + phone + '\n' +
-            '🏥 *Clinic:* ' + (clinic || 'Not provided') + '\n' +
-            '💬 *Challenge:* ' + message + '\n\n' +
-            '⏰ ' + new Date().toLocaleString('en-IN')
-        );
-
-        // ✅ GUARANTEED: Open WhatsApp with lead details
-        // This ALWAYS works — user sends the message to your WhatsApp
-        window.open('https://wa.me/918220627870?text=' + whatsappMsg, '_blank');
-
-        // ✅ BONUS: Try Google Script in background (Sheet + Email)
-        if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL') {
-            try {
-                fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, phone, clinic, message })
-                }).catch(() => {}); // Silently fail — WhatsApp already has the lead
-            } catch(e) {}
-        }
-
-        // Show success
-        form.style.display = 'none';
-        formSuccess.classList.add('show');
-        form.reset();
-        submitBtn.textContent = 'Get Free Audit →';
-        submitBtn.disabled = false;
+        // Send to Google Apps Script (saves to Sheet + sends email)
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, phone, clinic, message })
+        })
+        .then(() => {
+            form.style.display = 'none';
+            formSuccess.classList.add('show');
+            form.reset();
+        })
+        .catch(() => {
+            form.style.display = 'none';
+            formSuccess.classList.add('show');
+            form.reset();
+        })
+        .finally(() => {
+            submitBtn.textContent = 'Get Free Audit →';
+            submitBtn.disabled = false;
+        });
     });
 </script>
 
